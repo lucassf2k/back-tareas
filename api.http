@@ -1,0 +1,29 @@
+@BASEURL = http://localhost:3001/api
+@HOST = localhost:3001
+
+# @name GetTask
+GET {{BASEURL}}/task
+Host: {{HOST}}
+Content-Type: application/json
+
+###
+# @name SignUp
+POST {{BASEURL}}/user/sign-up
+Host: {{HOST}}
+Content-Type: application/json
+
+{
+  "email": "example@mail.com",
+  "password": "example_password"
+}
+
+###
+# @name SignIn
+POST {{BASEURL}}/user/sign-in
+Host: {{HOST}}
+Content-Type: application/json
+
+{
+  "email": "lucas@mail.com",
+  "password": "sharingan"
+}

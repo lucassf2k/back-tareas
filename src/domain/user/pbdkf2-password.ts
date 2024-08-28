@@ -13,13 +13,13 @@ export class PBDKF2Password implements IPassword {
     readonly salt: string,
   ) {}
 
-  static create(password: string): IPassword {
+  static create(password: string): PBDKF2Password {
     const salt = randomBytes(20).toString('hex');
     const value = PBDKF2Password.encode(password, salt);
     return new PBDKF2Password(value, salt);
   }
 
-  static restore(password: string, salt: string): IPassword {
+  static restore(password: string, salt: string): PBDKF2Password {
     return new PBDKF2Password(password, salt);
   }
 

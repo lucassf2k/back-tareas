@@ -1,11 +1,6 @@
 @BASEURL = http://localhost:3001/api
 @HOST = localhost:3001
 
-# @name GetTask
-GET {{BASEURL}}/task
-Host: {{HOST}}
-Content-Type: application/json
-
 ###
 # @name SignUp
 POST {{BASEURL}}/user/sign-up
@@ -24,6 +19,51 @@ Host: {{HOST}}
 Content-Type: application/json
 
 {
-  "email": "lucas@mail.com",
-  "password": "sharingan"
+  "email": "example@mail.com",
+  "password": "example_password"
 }
+
+###
+# @name GetAllTasks
+GET {{BASEURL}}/tasks?page=1
+Host: {{HOST}}
+Authorization: Bearer token
+Content-Type: application/json
+
+###
+# @name GetTask
+GET {{BASEURL}}/task/:id
+Host: {{HOST}}
+Authorization: Bearer token
+Content-Type: application/json
+
+###
+# @name CreateTask
+POST {{BASEURL}}/task
+Host: {{HOST}}
+Authorization: Bearer token
+Content-Type: application/json
+
+{
+  "title": "example task",
+  "description": "example task description"
+}
+
+###
+# @name UpdateTask
+PUT {{BASEURL}}/task
+Host: {{HOST}}
+Authorization: Bearer token
+Content-Type: application/json
+
+{
+  "title": "example task",
+  "description": "example task description"
+}
+
+###
+# @name DeletTask
+DELETE {{BASEURL}}/task/01919f3e-334c-7cc0-b61e-6411c6d8efa9
+Host: {{HOST}}
+Authorization: Bearer token
+Content-Type: application/json

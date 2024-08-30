@@ -22,9 +22,7 @@ export function authorizationMiddleware(
   const { authorization } = request.headers;
   const input = AuthorizationValidation.parse(authorization);
   const [_, token] = input.split(' ');
-  console.log(token);
   const payload = JWTService.verify(token, envs.JWT_SECRET_KEY) as JWTPayload;
-  console.log(payload);
   if (!payload.user.id) {
     throw new ApiError('user without permission', StatusCodes.UNAUTHORIZED);
   }

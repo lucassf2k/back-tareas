@@ -51,19 +51,18 @@ Content-Type: application/json
 
 ###
 # @name UpdateTask
-PUT {{BASEURL}}/task
+PUT {{BASEURL}}/task/:id
 Host: {{HOST}}
 Authorization: Bearer token
 Content-Type: application/json
 
 {
-  "title": "example task",
-  "description": "example task description"
+  "title": "Vamos a escola Zezinho"
 }
 
 ###
-# @name DeletTask
-DELETE {{BASEURL}}/task/01919f3e-334c-7cc0-b61e-6411c6d8efa9
+# @name DeleteTask
+DELETE {{BASEURL}}/task/:id
 Host: {{HOST}}
 Authorization: Bearer token
 Content-Type: application/json

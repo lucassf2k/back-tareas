@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && tsc-alias",
+    "start": "node --env-file=.env dist/main.js",
     "start:dev": "tsx watch --env-file=.env src/main.ts",
     "test": "jest",
     "test:watch": "jest --watch",

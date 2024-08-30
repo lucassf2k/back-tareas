@@ -42,13 +42,6 @@ export type CreateTaskDTO = z.infer<typeof CreateTaskValidation> & {
   userId: string;
 };
 
-export const UpdateTaskValidation = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  isCompleted: z.boolean().optional(),
-});
-export type UpdateTaskDTO = z.infer<typeof UpdateTaskValidation>;
-
 export const ListTaskValidation = z.object({
   page: z
     .number({ invalid_type_error: 'Espera-se um inteiro' })
@@ -71,3 +64,30 @@ export const GetTaskValidation = z.object({
 });
 
 export type GetTaskDTO = z.infer<typeof GetTaskValidation>;
+
+export const DeleteTaskValidation = z.object({
+  id: z
+    .string({
+      required_error: 'ID do usuário é obrigatório',
+      invalid_type_error: 'Espera-se uma string',
+    })
+    .uuid('UUID com formato inválido'),
+});
+export type DeleteTaskDTO = z.infer<typeof DeleteTaskValidation>;
+
+export const UpdateTaskValidation = z.object({
+  params: z.object({
+    id: z.string({ invalid_type_error: 'Espera-se uma string' }).uuid(),
+  }),
+  body: z.object({
+    title: z.string({ invalid_type_error: 'Espera-se uma string' }).optional(),
+    description: z
+      .string({ invalid_type_error: 'Espera-se uma string' })
+      .optional(),
+    isCompleted: z
+      .boolean({ invalid_type_error: 'Espera-se um boolean' })
+      .optional(),
+  }),
+});
+
+export type UpdateTaskDTO = z.infer<typeof UpdateTaskValidation>;

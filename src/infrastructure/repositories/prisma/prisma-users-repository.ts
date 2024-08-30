@@ -4,11 +4,13 @@ import { Email } from '@/domain/user/email';
 import { makePassword } from '@/main/factories/password-factory';
 import { prismaClient } from '@/infrastructure/repositories/prisma';
 import { IUsersRepository } from '@/application/repositories/i-users-repository';
+import { Logger } from '@/infrastructure/configurations/logger';
 
 class PrismaUsersRepository implements IUsersRepository {
   constructor(private readonly prismaClient: PrismaClient) {}
 
   async save(user: User): Promise<User | undefined> {
+    Logger.info(`saving user: ${user}`);
     const createdUser = await this.prismaClient.user.create({
       data: {
         id: user.id,
@@ -19,6 +21,7 @@ class PrismaUsersRepository implements IUsersRepository {
       },
     });
     if (!createdUser) return undefined;
+    Logger.info(`user saved: ${user}`);
     return user;
   }
 

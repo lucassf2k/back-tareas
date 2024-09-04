@@ -11,7 +11,7 @@ export function ExpressApp() {
   const app = express();
   app.use(pinoHttp);
   app.use(express.json());
-  app.use(cors({ origin: '*' }));
+  app.use(cors());
   setupRoutes(app);
   app.use(errorHandler);
   app.listen(envs.APP_PORT, () =>

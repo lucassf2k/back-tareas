@@ -1,5 +1,6 @@
 import express from 'express';
 import pinoHttp from 'pino-http';
+import cors from 'cors';
 import 'express-async-errors';
 import { setupRoutes } from '@/infrastructure/express/routes';
 import { envs } from '@/infrastructure/configurations/environments';
@@ -10,6 +11,7 @@ export function ExpressApp() {
   const app = express();
   app.use(pinoHttp);
   app.use(express.json());
+  app.use(cors({ origin: '*' }));
   setupRoutes(app);
   app.use(errorHandler);
   app.listen(envs.APP_PORT, () =>

@@ -1,4 +1,4 @@
-import type { Router, Handler } from 'express';
+import type { Router } from 'express';
 import {
   makeSignInController,
   makeSignUpController,

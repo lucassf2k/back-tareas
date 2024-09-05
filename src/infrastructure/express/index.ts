@@ -9,7 +9,7 @@ import { Logger } from '@/infrastructure/configurations/logger';
 
 export function ExpressApp() {
   const app = express();
-  app.use(pinoHttp);
+  app.use(pinoHttp());
   app.use(express.json());
   app.use(cors());
   setupRoutes(app);

@@ -153,7 +153,7 @@ Este documento descreve a API RESTful para o sistema de gerenciamento de tarefas
 
   - **401**
 
-  ```json
+  ```jsonc
   // Quando o e-mail não existe
   {
     "error": "user without permission"

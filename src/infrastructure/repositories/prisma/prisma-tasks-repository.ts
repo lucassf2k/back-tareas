@@ -74,6 +74,7 @@ class PrismaTasksRepository implements ITasksRepository {
       skip,
       take,
       where: { userId },
+      orderBy: { createdAt: 'desc' },
     });
     if (tasks.length === 0) return [];
     const output: Task[] = [];

@@ -11,7 +11,7 @@ export function taskRoutes(router: Router, authentication: Handler) {
   router.post('/task', authentication, (request, response) =>
     makeCreateTaskController().handle(request, response),
   );
-  router.put('/task/:id', authentication, (request, response) =>
+  router.patch('/task/:id', authentication, (request, response) =>
     makeUpdateTaskController().handle(request, response),
   );
   router.delete('/task/:id', authentication, (request, response) =>

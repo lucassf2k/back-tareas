@@ -51,7 +51,7 @@ Content-Type: application/json
 
 ###
 # @name UpdateTask
-PUT {{BASEURL}}/task/:id
+PATCH  {{BASEURL}}/task/:id
 Host: {{HOST}}
 Authorization: Bearer token
 Content-Type: application/json
